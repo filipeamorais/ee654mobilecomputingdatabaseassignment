@@ -28,9 +28,10 @@
         tools:context="com.example.dataaccesobjsqlprac.MainActivity">
         <ImageView
             android:id="@+id/viewDatabaseImageView"
-            android:layout_width="64dp"
+            android:layout_width="60dp"
             android:layout_height="64dp"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:onClick="showRecords"/>
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -53,7 +54,7 @@
         </RadioGroup>
         <ImageView
             android:id="@+id/deleteDatabaseImageView"
-            android:layout_width="64dp"
+            android:layout_width="60dp"
             android:layout_height="64dp"
             android:padding="5dp" />
         <RadioGroup
@@ -78,7 +79,7 @@
         </RadioGroup>
         <ImageView
             android:id="@+id/editDatabaseImageView"
-            android:layout_width="match_parent"
+            android:layout_width="60dp"
             android:layout_height="64dp"
             android:padding="5dp" />
     </LinearLayout>
