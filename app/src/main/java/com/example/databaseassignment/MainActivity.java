@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+    BookDAO bookDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +25,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showRecords(View v){
+        List<Book> books = bookDAO.getAllBooks();
+        String str = "";
+        for (Book b : books) {
+            String row = b.getId() + ": Title: " +
+                    b.getbookTitle() + ", Author: " +
+                    b.getbookAuthor() + ", Publisher: " +
+                    b.getBookPublisher() + ", Year: " + b.getbookYear();
+            str += row + "\n";
+        }
+
+
     }
 }

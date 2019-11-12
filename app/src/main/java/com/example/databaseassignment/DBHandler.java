@@ -24,7 +24,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String createTableString = "CREATE TABLE " +
                 TABLE_BOOKS + "(" + KEY_ID +
                 " INTEGER PRIMARY KEY," + KEY_TITLE + " TEXT, "+
-                KEY_PUBLISHER + " TEXT,"+ KEY_AUTHOR + " TEXT,"+ KEY_YEAR + " TEXT" + ")";
+                KEY_AUTHOR + " TEXT,"+  KEY_PUBLISHER + " TEXT,"+ KEY_YEAR + " TEXT" + ")";
         db.execSQL(createTableString);
     }
 
