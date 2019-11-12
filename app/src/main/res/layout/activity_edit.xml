@@ -19,7 +19,7 @@
         android:id="@+id/texViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Id"/>
+        android:text="Title"/>
     <EditText
         android:id="@+id/editTextTitle"
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:id="@+id/texViewAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Id"/>
+        android:text="Author"/>
     <EditText
         android:id="@+id/editTextAuthor"
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
         android:id="@+id/texViewPublisher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Id"/>
+        android:text="Publisher"/>
     <EditText
         android:id="@+id/editTextPublisher"
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
         android:id="@+id/texViewYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Id"/>
+        android:text="Year"/>
     <EditText
         android:id="@+id/editTextYear"
         android:layout_width="match_parent"
