@@ -1,6 +1,8 @@
 package com.example.databaseassignment;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
     int id;
     String bookTitle;
     String bookPublisher;
@@ -11,7 +13,8 @@ public class Book {
 
     }
 
-    public Book(String bookTitle, String bookPublisher, String bookAuthor, String bookYear){
+    public Book(int id, String bookTitle, String bookPublisher, String bookAuthor, String bookYear){
+        this.id = id;
         this.bookTitle = bookTitle;
         this.bookPublisher = bookPublisher;
         this.bookAuthor = bookAuthor;

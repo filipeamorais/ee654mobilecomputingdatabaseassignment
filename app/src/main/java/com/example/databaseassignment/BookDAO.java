@@ -1,7 +1,9 @@
 package com.example.databaseassignment;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
@@ -13,6 +15,14 @@ public class BookDAO {
 
     public BookDAO(Context context) {
         dBHandler = new DBHandler(context);
+    }
+
+    public void open() throws SQLException {
+        db = dBHandler.getWritableDatabase();
+    }
+
+    public void close() {
+        dBHandler.close();
     }
 
     public List<Book> getAllBooks() {
@@ -32,6 +42,19 @@ public class BookDAO {
             } while (cursor.moveToNext());
         }
         return bookList;
+    }
+
+    void addBook(Book book) {
+        ContentValues values = new ContentValues();
+        values.put(DBHandler.KEY_TITLE,
+                book.getbookTitle());
+        values.put(DBHandler.KEY_AUTHOR,
+                book.getbookAuthor());
+        values.put(DBHandler.KEY_PUBLISHER,
+                book.getBookPublisher());
+        values.put(DBHandler.KEY_YEAR,
+                book.getbookYear());
+        db.insert(DBHandler.TABLE_BOOKS, null, values);
     }
 
 }

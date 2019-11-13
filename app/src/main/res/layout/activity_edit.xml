@@ -56,13 +56,13 @@
         android:layout_height="wrap_content"
         android:text="INSERT"
         android:id="@+id/add"
-        android:onClick="addRecord"/>
+        android:onClick="insertCommand"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="UPDATE"
         android:id="@+id/update"
-        android:onClick="updateRecord"/>
+        android:onClick="updateCommand"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

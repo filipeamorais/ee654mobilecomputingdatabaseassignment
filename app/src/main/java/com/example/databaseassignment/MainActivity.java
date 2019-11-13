@@ -26,8 +26,22 @@ public class MainActivity extends AppCompatActivity {
         editDatabaseImageView.setImageResource(R.drawable.database_edit);
         ImageView deleteDatabaseImageView = this.findViewById(R.id.deleteDatabaseImageView);
         deleteDatabaseImageView.setImageResource(R.drawable.database_delete);
-
+        //instantiate the book data access object
+        bookDAO = new BookDAO(this);
+//        bookDAO.open();
+//        bookDAO.close();
+        //load the TextView
         textViewResult = (TextView)findViewById(R.id.textViewResult);
+    }
+
+    @Override protected void onResume() {
+        bookDAO.open();
+        super.onResume();
+    }
+
+    @Override protected void onPause() {
+        bookDAO.close();
+        super.onPause();
     }
 
     public void showRecords(View v){
@@ -40,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     b.getBookPublisher() + ", Year: " + b.getbookYear();
             str += row + "\n";
         }
+        textViewResult.setText(str);
     }
 
     public void deleteRecords(View v){ }
@@ -52,12 +67,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if (resultCode == 1) {
-                // The user picked a contact.
-                // The Intent's data Uri identifies which contact was selected.
-                textViewResult.setText(data.getStringExtra(EditActivity.MESSAGE_ADD));
-                // Do something with the contact here (bigger example below)
+    protected void onActivityResult(int requestCode, int resultCode, Intent dataSecondActivity) {
+        //add record
+        if (resultCode == 1) {
+                Book bookToAdd = (Book) dataSecondActivity.getSerializableExtra(EditActivity.MESSAGE_ADD);
+                bookDAO.open();
+                bookDAO.addBook(bookToAdd);
+                bookDAO.close();
             }
         }
 
