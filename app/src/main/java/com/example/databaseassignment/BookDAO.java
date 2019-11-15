@@ -85,7 +85,17 @@ public class BookDAO {
         String[] argumentOfSelection = {argument};
         db.delete(DBHandler.TABLE_BOOKS, selection +
                 "= ?", argumentOfSelection);
-//        db.close();
+    }
+
+    public int updateBook(Book book) {
+        ContentValues values = new ContentValues();
+        values.put(DBHandler.KEY_TITLE, book.getbookTitle());
+        values.put(DBHandler.KEY_AUTHOR, book.getbookAuthor());
+        values.put(DBHandler.KEY_PUBLISHER, book.getBookPublisher());
+        values.put(DBHandler.KEY_YEAR, book.getbookYear());
+        return db.update(DBHandler.TABLE_BOOKS, values,
+                DBHandler.KEY_ID + " = ?",
+                new String[] { String.valueOf(book.getId()) });
     }
 
 }

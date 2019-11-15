@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -62,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
     public void deleteAllRecords(){
         bookDAO.deleteAllBooks();
         textViewResult.setText("");
-
     }
 
     public void editRecord(View v){
@@ -80,7 +80,17 @@ public class MainActivity extends AppCompatActivity {
                 bookDAO.open();
                 bookDAO.addBook(bookToAdd);
                 bookDAO.close();
-            }
+                textViewResult.setText("");
+                Toast.makeText(getBaseContext(), "Book added!", Toast.LENGTH_SHORT).show();
+        }
+        if (resultCode == 2) {
+            Book bookToUpdate = (Book) dataSecondActivity.getSerializableExtra(EditActivity.MESSAGE_ADD);
+            bookDAO.open();
+            bookDAO.updateBook(bookToUpdate);
+            bookDAO.close();
+            textViewResult.setText("");
+            Toast.makeText(getBaseContext(), "Book updated!", Toast.LENGTH_SHORT).show();
+        }
         }
 
 
@@ -114,18 +124,23 @@ public class MainActivity extends AppCompatActivity {
         switch (selectedItem){
             case R.id.deleteAll:
                 deleteAllRecords();
+                Toast.makeText(getBaseContext(), "All books deleted!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.deleteTitle:
                 deleteBy(DBHandler.KEY_TITLE, argument);
+                Toast.makeText(getBaseContext(), "Book(s) deleted!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.deleteAuthor:
                 deleteBy(DBHandler.KEY_AUTHOR, argument);
+                Toast.makeText(getBaseContext(), "Book(s) deleted!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.deletePublisher:
                 deleteBy(DBHandler.KEY_PUBLISHER, argument);
+                Toast.makeText(getBaseContext(), "Book(s) deleted!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.deleteYear:
                 deleteBy(DBHandler.KEY_YEAR, argument);
+                Toast.makeText(getBaseContext(), "Book(s) deleted!", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

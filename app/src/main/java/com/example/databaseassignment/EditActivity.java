@@ -30,7 +30,12 @@ public class EditActivity extends AppCompatActivity {
         finish();
     }
 
-    public void updateCommand (View v) {}
+    public void updateCommand(View v) {
+        Intent intentWithResult = new Intent();
+        intentWithResult.putExtra(MESSAGE_ADD, createBookObj());
+        setResult(2, intentWithResult);
+        finish();
+    }
 
     public void goBack(View v) {}
 
