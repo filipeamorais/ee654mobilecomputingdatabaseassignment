@@ -30,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
         deleteDatabaseImageView.setImageResource(R.drawable.database_delete);
         //instantiate the book data access object
         bookDAO = new BookDAO(this);
-//        bookDAO.open();
-//        bookDAO.close();
         //load the TextView
         textViewResult = (TextView)findViewById(R.id.textViewResult);
     }
@@ -59,7 +57,11 @@ public class MainActivity extends AppCompatActivity {
         textViewResult.setText(str);
     }
 
-    public void deleteAllRecords(View v){ }
+    public void deleteAllRecords(){
+        bookDAO.deleteAllBooks();
+        textViewResult.setText("");
+
+    }
 
     public void editRecord(View v){
         try {
@@ -91,7 +93,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickedDelete(View v){
-
+        RadioGroup deleteGroup = findViewById(R.id.deleteGroupRadioGroup);
+        int selectedItem = deleteGroup.getCheckedRadioButtonId();
+        switch (selectedItem){
+            case R.id.deleteAll:
+                deleteAllRecords();
+                break;
+        }
     }
 
 }

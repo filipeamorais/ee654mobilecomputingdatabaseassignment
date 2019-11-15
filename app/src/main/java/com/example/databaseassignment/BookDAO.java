@@ -57,4 +57,9 @@ public class BookDAO {
         db.insert(DBHandler.TABLE_BOOKS, null, values);
     }
 
+    void deleteAllBooks(){
+        db.execSQL("delete from " +
+                DBHandler.TABLE_BOOKS);
+    }
+
 }
