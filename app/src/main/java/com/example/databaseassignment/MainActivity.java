@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.List;
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    public void showRecords(View v){
+    public void showAllRecords(){
         List<Book> books = bookDAO.getAllBooks();
         String str = "";
         for (Book b : books) {
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         textViewResult.setText(str);
     }
 
-    public void deleteRecords(View v){ }
+    public void deleteAllRecords(View v){ }
 
     public void editRecord(View v){
         try {
@@ -76,5 +78,20 @@ public class MainActivity extends AppCompatActivity {
                 bookDAO.close();
             }
         }
+
+
+    public void clickedShow(View v){
+        RadioGroup showGroup = findViewById(R.id.showGroupRadioGroup);
+        int selectedItem = showGroup.getCheckedRadioButtonId();
+        switch (selectedItem){
+            case R.id.showAll:
+                showAllRecords();
+                break;
+        }
+    }
+
+    public void clickedDelete(View v){
+
+    }
 
 }

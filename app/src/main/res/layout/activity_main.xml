@@ -31,23 +31,28 @@
             android:layout_width="60dp"
             android:layout_height="64dp"
             android:padding="5dp"
-            android:onClick="showRecords"/>
+            android:onClick="clickedShow"/>
         <RadioGroup
+            android:id="@+id/showGroupRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <RadioButton
+                android:id="@+id/showAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="All"/>
             <RadioButton
+                android:id="@+id/showTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Title"/>
             <RadioButton
+                android:id="@+id/showPublisher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Publisher"/>
             <RadioButton
+                android:id="@+id/showYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Year"/>
@@ -57,23 +62,28 @@
             android:layout_width="60dp"
             android:layout_height="64dp"
             android:padding="5dp"
-            android:onClick="deleteRecords"/>
+            android:onClick="clickedDelete"/>
         <RadioGroup
+            android:id="@+id/deleteGroupRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <RadioButton
+                android:id="@+id/deleteAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="All"/>
             <RadioButton
+                android:id="@+id/deleteTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Title"/>
             <RadioButton
+                android:id="@+id/deletePublisher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Publisher"/>
             <RadioButton
+                android:id="@+id/deleteYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Year"/>
