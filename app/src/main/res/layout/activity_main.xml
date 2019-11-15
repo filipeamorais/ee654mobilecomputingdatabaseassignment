@@ -47,6 +47,11 @@
                 android:layout_height="wrap_content"
                 android:text="Title"/>
             <RadioButton
+                android:id="@+id/showAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Author"/>
+            <RadioButton
                 android:id="@+id/showPublisher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,6 +77,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="All"/>
+            <RadioButton
+                android:id="@+id/deleteAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Author"/>
             <RadioButton
                 android:id="@+id/deleteTitle"
                 android:layout_width="wrap_content"

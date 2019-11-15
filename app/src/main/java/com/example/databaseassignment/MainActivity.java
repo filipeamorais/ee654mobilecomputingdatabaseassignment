@@ -16,6 +16,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     BookDAO bookDAO;
     TextView textViewResult;
+    EditText editTextValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
         deleteDatabaseImageView.setImageResource(R.drawable.database_delete);
         //instantiate the book data access object
         bookDAO = new BookDAO(this);
-        //load the TextView
+        //load the TextView and EditText
         textViewResult = (TextView)findViewById(R.id.textViewResult);
+        editTextValue = (EditText)findViewById(R.id.editTextValue);
     }
 
     @Override protected void onResume() {
@@ -85,9 +87,22 @@ public class MainActivity extends AppCompatActivity {
     public void clickedShow(View v){
         RadioGroup showGroup = findViewById(R.id.showGroupRadioGroup);
         int selectedItem = showGroup.getCheckedRadioButtonId();
+        String argument = editTextValue.getText().toString();
         switch (selectedItem){
             case R.id.showAll:
                 showAllRecords();
+                break;
+            case R.id.showTitle:
+                showBy(DBHandler.KEY_TITLE, argument);
+                break;
+            case R.id.showAuthor:
+                showBy(DBHandler.KEY_AUTHOR, argument);
+                break;
+            case R.id.showPublisher:
+                showBy(DBHandler.KEY_PUBLISHER, argument);
+                break;
+            case R.id.showYear:
+                showBy(DBHandler.KEY_YEAR, argument);
                 break;
         }
     }
@@ -95,11 +110,43 @@ public class MainActivity extends AppCompatActivity {
     public void clickedDelete(View v){
         RadioGroup deleteGroup = findViewById(R.id.deleteGroupRadioGroup);
         int selectedItem = deleteGroup.getCheckedRadioButtonId();
+        String argument = editTextValue.getText().toString();
         switch (selectedItem){
             case R.id.deleteAll:
                 deleteAllRecords();
                 break;
+            case R.id.deleteTitle:
+                deleteBy(DBHandler.KEY_TITLE, argument);
+                break;
+            case R.id.deleteAuthor:
+                deleteBy(DBHandler.KEY_AUTHOR, argument);
+                break;
+            case R.id.deletePublisher:
+                deleteBy(DBHandler.KEY_PUBLISHER, argument);
+                break;
+            case R.id.deleteYear:
+                deleteBy(DBHandler.KEY_YEAR, argument);
+                break;
         }
+    }
+
+    public void showBy(String selection, String argument){
+        List<Book> books = bookDAO.getBooks(selection, argument);
+        String str = "";
+        for (Book b : books) {
+            String row = b.getId() + ": Title: " +
+                    b.getbookTitle() + ", Author: " +
+                    b.getbookAuthor() + ", Publisher: " +
+                    b.getBookPublisher() + ", Year: " + b.getbookYear();
+            str += row + "\n";
+        }
+        textViewResult.setText(str);
+    }
+
+    public void deleteBy(String selection, String argument){
+        bookDAO.deleteBooks(selection, argument);
+        String str = "";
+        textViewResult.setText(str);
     }
 
 }

@@ -62,4 +62,30 @@ public class BookDAO {
                 DBHandler.TABLE_BOOKS);
     }
 
+    public List<Book> getBooks (String selection, String argument){
+        List<Book> bookList = new ArrayList<Book>();
+        String[] columnsToRetrieve ={DBHandler.KEY_ID, DBHandler.KEY_TITLE, DBHandler.KEY_AUTHOR, DBHandler.KEY_PUBLISHER, DBHandler.KEY_YEAR};
+        String[] argumentOfSelection = {argument};
+        Cursor cursor = db.query(DBHandler.TABLE_BOOKS, columnsToRetrieve,selection+ "=?", argumentOfSelection,null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Book book = new Book();
+                book.setId(Integer.parseInt(cursor.getString(0)));
+                book.setbookTitle(cursor.getString(1));
+                book.setbookAuthor(cursor.getString(2));
+                book.setBookPublisher(cursor.getString(3));
+                book.setbookYear(cursor.getString(4));
+                bookList.add(book);
+            } while (cursor.moveToNext());
+        }
+        return bookList;
+    }
+
+    public void deleteBooks(String selection, String argument) {
+        String[] argumentOfSelection = {argument};
+        db.delete(DBHandler.TABLE_BOOKS, selection +
+                "= ?", argumentOfSelection);
+//        db.close();
+    }
+
 }
